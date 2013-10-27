@@ -3,9 +3,11 @@ using System.Collections;
 
 [RequireComponent(typeof(AudioSource))]
 public class BulletAI : MonoBehaviour {
-
+	
+	[HideInInspector]
 	public float damage;
 	public GameObject particle;
+	public float explosionSize = 3.0f;
 	bool finished = false;
 	
 	void FixedUpdate () {
@@ -22,10 +24,12 @@ public class BulletAI : MonoBehaviour {
 		audio.Play();
 		renderer.enabled = false;
 		collider.enabled = false;
+		GetComponent<TrailRenderer>().enabled = false;
+		
 		finished = true;
 		
 		//	Spawn some debris
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < explosionSize; i++) {
 			Vector3 dir = transform.up;
 			dir += transform.forward * (Random.Range(-500.0f,500.0f)/1000.0f);
 			dir += transform.right * (Random.Range(-500.0f,500.0f)/1000.0f);

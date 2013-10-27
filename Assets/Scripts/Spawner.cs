@@ -21,7 +21,7 @@ public class Spawner : MonoBehaviour {
 			fRate = Random.Range(rate, rate*5);
 			Instantiate(enemyType, transform.position, transform.rotation);
 			rate-=(rate/10);
-			rate = Mathf.Clamp(rate, 0.1f, maxRate);
+			rate = Mathf.Clamp(rate, 1.0f, maxRate);
 		}
 	}
 }

@@ -22,4 +22,11 @@ public class Movement : MonoBehaviour {
 		rigidbody.AddForce(v3Direction  * fAcceleration, ForceMode.Force);		
 		rigidbody.velocity = Vector3.ClampMagnitude(rigidbody.velocity, fVelocityMax);
 	}
+	
+	void OnCollisionEnter(Collision other) {
+		Debug.Log("Collide!");
+		if (other.transform.tag == "Enemy") {
+			GameObject.Find("$GameManager").GetComponent<GameManager>().playerHealth -= 1.0f;	
+		}
+	}
 }

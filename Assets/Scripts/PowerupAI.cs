@@ -3,22 +3,20 @@ using System.Collections;
 
 public class PowerupAI : MonoBehaviour {
 	
-	public GameObject [] upgrades;
+	public GameObject upgrade;
 	float distance = 0;
 	float turnAround = 30;
 	bool up = true;
 	
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.tag == "Player") {
-			foreach (GameObject upgrade in upgrades) {
-				GameObject obj = Instantiate(upgrade, other.transform.position, other.transform.rotation) as GameObject;
-				obj.transform.parent = other.transform;
-				Vector3 offset = obj.transform.position;
-				offset += upgrade.transform.position;
-				obj.transform.position = offset;
-			}
+			foreach (Transform child in other.transform)
+				Destroy(child.gameObject);			
+	
+			GameObject obj = Instantiate(upgrade, other.transform.position, other.transform.rotation) as GameObject;
+			obj.transform.parent = other.transform;				
+			Destroy(gameObject);
 		}
-		Destroy(gameObject);
 	}
 	
 	// Update is called once per frame

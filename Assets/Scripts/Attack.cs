@@ -6,7 +6,9 @@ public class Attack : MonoBehaviour {
 	void FixedUpdate () {
 		if (Input.GetMouseButton(0)) {
 			foreach (Transform child in transform) { 
-				child.GetComponent<Shoot>().ShootGun();
+				foreach (Transform childchild in child.transform) { 
+					childchild.GetComponent<Shoot>().ShootGun();
+				}
 			}
 		}	
 	}

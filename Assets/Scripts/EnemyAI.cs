@@ -7,15 +7,33 @@ public class EnemyAI : MonoBehaviour {
 	public float Health = 100.0f;
 	public float fAcceleration;
 	public float fVelocityMax;
-	public GameObject particle;
+	
+	public Material flashMat;
+	private Material baseMat;
+	
+	public GameObject particle;	
+	public GameObject redOrb;
+	public GameObject blueOrb;
+	public GameObject orangeOrb;
+	
+	void Start() {
+		baseMat = renderer.material;	
+	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
 		if (Health <= 0) {
 			renderer.enabled = false;
 			collider.enabled = false;	
-			if (!audio.isPlaying)
+			if (!audio.isPlaying) {
+				int ran = Random.Range(0, 30);
+				switch (ran) {
+					case 10: Instantiate(redOrb, transform.position, transform.rotation); break;
+					case 20: Instantiate(blueOrb, transform.position, transform.rotation); break;
+					case 30: Instantiate(orangeOrb, transform.position, transform.rotation); break;
+				}
 				Destroy(gameObject);
+			}
 		}
 		
 		//	Track Towards the Player
@@ -27,6 +45,8 @@ public class EnemyAI : MonoBehaviour {
 	
 	public void TakeDamage(float _damage) {
 		Health-=_damage;
+		renderer.material = flashMat;
+		Invoke("Flash", 0.25f);
 		if (Health <= 0) {
 			audio.Play();
 			
@@ -41,5 +61,9 @@ public class EnemyAI : MonoBehaviour {
 				obj.renderer.material = gameObject.renderer.material;
 			}				
 		}
+	}
+	
+	void Flash() {
+		renderer.material = baseMat;
 	}
 }
