@@ -14,7 +14,7 @@ public class CameraMove : MonoBehaviour {
 	void Update () {
 		
 		Vector3 newPos = attach.transform.position - offset;
-		newPos.y = transform.position.y;
+		newPos.y = 20.0f;
 		
 		Vector3 currentPos = transform.position;
 		
