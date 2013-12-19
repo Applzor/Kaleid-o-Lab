@@ -1,18 +1,17 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class ShellAI : MonoBehaviour {
 
-	float spawn;
-	float life = 0.5f;
-	public ParticleSystem emitter;
-	
+	public float life;
+	private float spawn;
+
 	void Awake() {
 		spawn = Time.time;
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		if (Time.time > spawn + life)
 			Destroy(this.gameObject);
 	}
