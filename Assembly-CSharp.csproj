@@ -46,14 +46,14 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\EnemyAI.cs" />
      <Compile Include="Assets\Scripts\BulletAI.cs" />
+     <Compile Include="Assets\Scripts\EnemyAI.cs" />
      <Compile Include="Assets\Scripts\Player\Attack_.cs" />
      <Compile Include="Assets\Scripts\Player\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Player\Movement.cs" />
      <Compile Include="Assets\Scripts\Player\RotateToMouse.cs" />
-     <Compile Include="Assets\Scripts\ShellAI.cs" />
      <Compile Include="Assets\Scripts\Weapon.cs" />
+     <None Include="Assets\Materials\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Materials\Shaders\DiffuseCullFront.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
