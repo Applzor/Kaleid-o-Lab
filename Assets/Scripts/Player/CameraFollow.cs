@@ -4,8 +4,10 @@ using System.Collections;
 public class CameraFollow : MonoBehaviour {
 
 	public int zoomSpeed = 2;
-	public Vector2 zoomMin = new Vector2(-5, 5);
-	public Vector2 zoomMax = new Vector2(-30, 30);
+	//public Vector2 zoomMin = new Vector2(-5, 5);
+	//public Vector2 zoomMax = new Vector2(-30, 30);
+	public int zoomMin = 5;
+	public int zoomMax = 30;
 
 	private GameObject attach;
 	private Vector3 offset;
@@ -33,8 +35,8 @@ public class CameraFollow : MonoBehaviour {
 			offset.y -= zoomSpeed;
 			offset.z += zoomSpeed;
 		}
-		offset.y = (offset.y > zoomMin.x) ? zoomMin.x : (offset.y < zoomMax.x) ? zoomMax.x : offset.y;
-		offset.z = (offset.z < zoomMin.y) ? zoomMin.y : (offset.z > zoomMax.y) ? zoomMax.y : offset.z;
+		offset.y = (offset.y > -zoomMin) ? -zoomMin : (offset.y < -zoomMax) ? -zoomMax : offset.y;
+		offset.z = (offset.z < zoomMin) ? zoomMin : (offset.z > zoomMax) ? zoomMax : offset.z;
 		
 	}
 }
