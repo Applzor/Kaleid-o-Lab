@@ -6,6 +6,8 @@ public class EnemyAI : MonoBehaviour {
 	public float healthMax;
 	protected float healthCurrent;
 
+	public GameObject[] particles;
+
 	void Awake() {
 		healthCurrent = healthMax;
 	}
@@ -17,6 +19,9 @@ public class EnemyAI : MonoBehaviour {
 
 	protected void Explode() {
 		//	Create Particle Explosion
+		for (int i = 0; i < particles.Length; i++) {
+			Instantiate(particles[i], transform.position, transform.rotation);
+		}
 		
 		//	Play sound effect
 

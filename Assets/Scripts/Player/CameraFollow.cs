@@ -4,8 +4,6 @@ using System.Collections;
 public class CameraFollow : MonoBehaviour {
 
 	public int zoomSpeed = 2;
-	//public Vector2 zoomMin = new Vector2(-5, 5);
-	//public Vector2 zoomMax = new Vector2(-30, 30);
 	public int zoomMin = 5;
 	public int zoomMax = 30;
 
