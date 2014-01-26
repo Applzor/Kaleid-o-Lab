@@ -1,10 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Weapons\_Weapon.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\CameraFollow.cs">
     <Files>
-      <File FileName="c:\Users\Applzor\Documents\Programming\Git\Kaleid-o-Lab\Assets\Scripts\Player\Attack_.cs" Line="12" Column="25" />
+      <File FileName="c:\Users\Applzor\Documents\Programming\Git\Kaleid-o-Lab\Assets\Scripts\Player\Attack_.cs" Line="16" Column="32" />
       <File FileName="c:\Users\Applzor\Documents\Programming\Git\Kaleid-o-Lab\Assets\Scripts\Weapons\_Weapon_Blue.cs" Line="4" Column="30" />
       <File FileName="Assets\Scripts\Weapons\_Weapon.cs" Line="10" Column="3" />
+      <File FileName="Assets\Scripts\Weapons\Bullets_Particle.cs" Line="10" Column="30" />
+      <File FileName="Assets\Scripts\Player\RotateToMouse.cs" Line="13" Column="1" />
+      <File FileName="Assets\Scripts\Player\CameraFollow.cs" Line="14" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
