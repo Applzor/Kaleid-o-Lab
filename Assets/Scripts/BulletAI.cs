@@ -3,17 +3,14 @@ using System.Collections;
 
 public class BulletAI : MonoBehaviour {
 
+	public GameObject sparks;
 	public GameObject debris;
-	public GameObject[] particles;
-	public float debrisAmount = 7.0f;
 
 	[HideInInspector]
 	public float damage;
 
 	private float life = 10;	//	Max life time of a bullet
 	private float spawn;
-
-	private static Random rand;
 
 	void Awake() {
 		spawn = Time.time;
@@ -37,20 +34,16 @@ public class BulletAI : MonoBehaviour {
 	void Explode(Collision e) {
 
 		//	Create Explosion Effect
-		float force = 250.0f;
-		for (int i = 0; i < debrisAmount; i++) {
-			GameObject obj = Instantiate(debris, transform.position, transform.rotation) as GameObject;
 
-			Vector3 dir = new Vector3(Random.Range(-1000,1000),Random.Range(-1000,1000),Random.Range(-1000,1000));
-			if (dir != Vector3.zero) dir.Normalize();
+		Debug.Log ("Dir: " + transform.forward);
+		Debug.Log ("Nrml: " + e.contacts [0].normal);
 
-			obj.rigidbody.AddForce(dir * force);
-			//obj.renderer.material = e.gameObject.renderer.material;
-		}
 
-		for (int i = 0; i < particles.Length; i++) {
-			Instantiate(particles[i], transform.position, transform.rotation);
-		}
+		var reflect = Vector3.Reflect (transform.forward, e.contacts [0].normal);
+		var rot = Quaternion.FromToRotation (transform.forward, reflect);
+
+		Instantiate(sparks, transform.position, Quaternion.Euler(0,rot.eulerAngles.y,0));
+		Instantiate(debris, transform.position, Quaternion.Euler(-90,transform.rotation.eulerAngles.y,0));
 
 		//	Play sound effect
 

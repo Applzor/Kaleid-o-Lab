@@ -20,7 +20,7 @@ public class EnemyAI : MonoBehaviour {
 	protected void Explode() {
 		//	Create Particle Explosion
 		for (int i = 0; i < particles.Length; i++) {
-			Instantiate(particles[i], transform.position, transform.rotation);
+			Instantiate(particles[i], transform.position, Quaternion.Euler(-90,0,transform.rotation.eulerAngles.z));
 		}
 		
 		//	Play sound effect

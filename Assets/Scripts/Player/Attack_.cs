@@ -1,36 +1,44 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Attack_ : MonoBehaviour {
 
 	public float damage;
 	public float cooldown;
 
-	public float bulletForce;
-	public float shellForce;
+	private float timer;
+	private List<Transform>childsOfGameobject = new List<Transform>();
 	
-	public GameObject bullet;
-	public GameObject shell;
 
-	private float lastShot;
-
-	void Awake() {
-		foreach (Transform child in transform) {  
-			child.GetComponent<Weapon>().bulletForce = bulletForce;
-			child.GetComponent<Weapon>().bullet = bullet;
-			child.GetComponent<Weapon>().shellForce = shellForce;
-			child.GetComponent<Weapon>().shell = shell;
+	void Start() {
+		foreach (Transform child in transform) {
+			child.GetComponentInChildren<Bullets_Particle> ().fDamage = damage;
 		}
 	}
 	
 	void Update() {
-		if (Time.time > lastShot + cooldown) {
+		timer += Time.deltaTime;
+		if (timer >= cooldown) {
+			timer = 0;
 			if (Input.GetButton("Fire1") && transform.parent.tag == "Player") {
-				lastShot = Time.time;
 				foreach (Transform child in transform) {  
-					child.GetComponent<Weapon>().Shoot(damage);
+					child.GetComponent<_Weapon>().Shoot();
 				}
 			}
 		}
+	}
+	
+
+	private List<Transform> GetAllChilds(Transform transformForSearch) {
+		List<Transform> getedChilds = new List<Transform>();
+		
+		foreach (Transform trans in transformForSearch.transform)
+		{
+			//Debug.Log (trans.name);
+			GetAllChilds ( trans.transform );
+			childsOfGameobject.Add ( trans.transform );       
+		}   
+		return getedChilds;
 	}
 }

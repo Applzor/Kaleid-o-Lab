@@ -1,9 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\EnemyAI.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Weapons\_Weapon.cs">
     <Files>
-      <File FileName="Assets\Scripts\EnemyAI.cs" Line="22" Column="39" />
-      <File FileName="Assets\Scripts\BulletAI.cs" Line="51" Column="3" />
+      <File FileName="c:\Users\Applzor\Documents\Programming\Git\Kaleid-o-Lab\Assets\Scripts\Player\Attack_.cs" Line="12" Column="25" />
+      <File FileName="c:\Users\Applzor\Documents\Programming\Git\Kaleid-o-Lab\Assets\Scripts\Weapons\_Weapon_Blue.cs" Line="4" Column="30" />
+      <File FileName="Assets\Scripts\Weapons\_Weapon.cs" Line="10" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
