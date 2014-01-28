@@ -56,7 +56,9 @@
      <Compile Include="Assets\Scripts\Weapons\Bullets_Particle.cs" />
      <Compile Include="Assets\Scripts\Weapons\_Weapon.cs" />
      <Compile Include="Assets\Scripts\Weapons\_Weapon_Blue.cs" />
+     <Compile Include="Assets\Scripts\_GameManager.cs" />
      <None Include="Assets\Materials\Shaders\Particle Alpha Blend (Queue +100).shader" />
+     <None Include="Assets\Materials\Shaders\GUI_3DText.shader" />
      <None Include="Assets\Materials\Shaders\DiffuseCullFront.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

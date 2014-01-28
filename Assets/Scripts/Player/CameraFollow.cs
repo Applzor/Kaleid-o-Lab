@@ -3,10 +3,10 @@ using System.Collections;
 
 public class CameraFollow : MonoBehaviour {
 	
-	public float slerpSpeed = 2.0f;
-	public float zoomSpeed = 1.0f;
-	public float zoomOutMax = 1.0f;
-	public float zoomInMax = 1.0f;
+	public float slerpSpeed = 3.0f;
+	public float zoomSpeed = 2.0f;
+	public float zoomOutMax = 3.0f;
+	public float zoomInMax = 3.0f;
 	private Vector3 offsetStart;
 	
 	private GameObject attach;
