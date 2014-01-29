@@ -1,21 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class _Weapon : MonoBehaviour {
 
-	public virtual void Shoot() {		
-		if (audio != null) {
-			audio.Play();
-		}
+	public float damage;
+	public float cooldown;
+	
+	private float timer = 0.0f;
 
-		if (animation != null) {
-			animation.Play();
-		}
+	void Update() {
+		timer += Time.deltaTime;
+	}
 
-		foreach (Transform child in transform) {
-			if (child.particleSystem != null) {
-				child.particleSystem.Play();
-			}
+	public virtual void Shoot() {	
+
+		if (timer >= cooldown) {
+			timer = 0;
+			
+			foreach (Transform child in transform) {
+				if (child.GetComponent<Weapon_Shoot>()) {
+					child.GetComponent<Weapon_Shoot>().Shoot(damage);
+
+				}
+			}			
 		}
 	}
 }
