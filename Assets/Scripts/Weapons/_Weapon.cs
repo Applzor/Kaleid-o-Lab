@@ -7,7 +7,7 @@ public class _Weapon : MonoBehaviour {
 	public float damage;
 	public float cooldown;
 	
-	private float timer = 0.0f;
+	protected float timer = 0.0f;
 
 	void Update() {
 		timer += Time.deltaTime;
