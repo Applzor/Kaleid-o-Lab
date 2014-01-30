@@ -8,8 +8,14 @@ public class EnemyAI : MonoBehaviour {
 
 	public GameObject[] particles;
 
+	protected GameObject gameManager;
+
 	void Awake() {
 		healthCurrent = healthMax;
+	}
+
+	void Start() {
+		gameManager = GameObject.Find ("$_GameObject");
 	}
 
 	void FixedUpdate() {
