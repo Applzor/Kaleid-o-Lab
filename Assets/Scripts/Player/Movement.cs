@@ -7,11 +7,6 @@ public class Movement : MonoBehaviour {
 	public float Acceleration;
 	public float VelocityMax;
 	
-	// Use this for initialization
-	void Awake () {
-		rigidbody.freezeRotation = true;
-	}
-	
 	// Update is called once per frame
 	void FixedUpdate () {		
 		//	Get the direction based on player input
