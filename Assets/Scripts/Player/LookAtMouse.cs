@@ -31,7 +31,7 @@ public class LookAtMouse : MonoBehaviour
 			Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
 			
 			// Smoothly rotate towards the target point.
-			transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, speed);
+			transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, speed);
 		}
 	}
 }

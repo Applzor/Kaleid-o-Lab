@@ -16,12 +16,11 @@ public class _Weapon : MonoBehaviour {
 	public virtual void Shoot() {	
 
 		if (timer >= cooldown) {
-			timer = 0;
+			timer = 0.0f;
 			
 			foreach (Transform child in transform) {
 				if (child.GetComponent<Weapon_Shoot>()) {
 					child.GetComponent<Weapon_Shoot>().Shoot(damage);
-
 				}
 			}			
 		}

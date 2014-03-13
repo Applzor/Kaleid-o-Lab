@@ -7,7 +7,7 @@ public class Bullets_Particle : MonoBehaviour {
 	public float fDamage = 0;
 	
 	protected virtual void OnParticleCollision(GameObject other) {
-		if (other.tag == "Enemy") {
+		if (other.tag == _Tags.Enemy) {
 			other.GetComponent<EnemyAI>().TakeDamage(fDamage);
 		}
 	}

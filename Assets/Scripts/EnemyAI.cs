@@ -15,7 +15,7 @@ public class EnemyAI : MonoBehaviour {
 	}
 
 	void Start() {
-		gameManager = GameObject.Find ("$_GameObject");
+		gameManager = GameObject.Find ("$GameManager");
 	}
 
 	void FixedUpdate() {
@@ -32,6 +32,7 @@ public class EnemyAI : MonoBehaviour {
 		//	Play sound effect
 
 		//	Add to score?
+		gameManager.transform.GetComponent<_GameManager> ().playerScore++;
 		
 		//	Delete bullet last
 		Destroy (this.gameObject);

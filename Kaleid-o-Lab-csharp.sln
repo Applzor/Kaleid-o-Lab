@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 
 Project("{207ABA33-9126-3ABA-6E21-1CBDE669C2C7}") = "Kaleid-o-Lab", "Assembly-CSharp-vs.csproj", "{3E1BB7BD-0FE7-3987-2084-4C5EFB143305}"
 EndProject
+Project("{207ABA33-9126-3ABA-6E21-1CBDE669C2C7}") = "Kaleid-o-Lab", "Assembly-CSharp-Editor-vs.csproj", "{BB8053FC-DA57-62A3-4558-4E8847EEA5A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,11 +15,15 @@ Global
 		{3E1BB7BD-0FE7-3987-2084-4C5EFB143305}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E1BB7BD-0FE7-3987-2084-4C5EFB143305}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E1BB7BD-0FE7-3987-2084-4C5EFB143305}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB8053FC-DA57-62A3-4558-4E8847EEA5A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB8053FC-DA57-62A3-4558-4E8847EEA5A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB8053FC-DA57-62A3-4558-4E8847EEA5A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB8053FC-DA57-62A3-4558-4E8847EEA5A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																																																																																																																																GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																																																																																																																	GlobalSection(MonoDevelopProperties) = preSolution
 <<<<<<< HEAD
 =======
 =======
