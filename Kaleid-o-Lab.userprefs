@@ -1,8 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\Wallrun\Assets\FirstPersonMove.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\RotateToMouse.cs">
     <Files>
-      <File FileName="..\Wallrun\Assets\FirstPersonMove.cs" Line="4" Column="29" />
+      <File FileName="Assets\Scripts\Player\RotateToMouse.cs" Line="13" Column="11" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

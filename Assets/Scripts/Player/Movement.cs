@@ -5,7 +5,6 @@ using System.Collections;
 public class Movement : MonoBehaviour {
 	
 	public float Acceleration;
-	public float VelocityMax;
 	
 	// Update is called once per frame
 	void FixedUpdate () {		
