@@ -1,9 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class RotateToMouse : MonoBehaviour {
- 
-	public float RotateSpeed;
+	
+	public AnimationCurve RotationCurve = AnimationCurve.Linear(0, 5, 180, 20);
 
 	// Update is called once per frame
 	void Update () {
@@ -12,8 +12,7 @@ public class RotateToMouse : MonoBehaviour {
 		T.z = T.y;
 		T.y = 0;
 
-		//transform.forward = T.normalized;
-		transform.forward = Vector3.RotateTowards (transform.forward, T.normalized, 0.1f, RotateSpeed);
-		//transform.forward = Vector3.Lerp (transform.forward, T.normalized, RotateSpeed);
+		float angle = Vector3.Angle (transform.forward, T);
+		transform.forward = Vector3.RotateTowards (transform.forward, T.normalized, Mathf.Deg2Rad * RotationCurve.Evaluate(angle), 0);
 	}
 }

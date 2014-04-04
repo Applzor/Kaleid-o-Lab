@@ -2,7 +2,8 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\RotateToMouse.cs">
     <Files>
-      <File FileName="Assets\Scripts\Player\RotateToMouse.cs" Line="13" Column="11" />
+      <File FileName="Assets\Scripts\Player\RotateToMouse.cs" Line="6" Column="75" />
+      <File FileName="Assets\Scripts\Player\RotateToMouse.cs" Line="19" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
