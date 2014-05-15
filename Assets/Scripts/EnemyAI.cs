@@ -10,12 +10,21 @@ public class EnemyAI : MonoBehaviour {
 
 	protected GameObject gameManager;
 
+	protected GameObject navTarget;
+	protected NavMeshAgent navAgent;
+
 	void Awake() {
 		healthCurrent = healthMax;
 	}
 
 	void Start() {
 		gameManager = GameObject.Find ("$GameManager");
+		navAgent = GetComponent<NavMeshAgent> ();
+		navTarget = GameObject.Find ("Player");
+	}
+
+	void Update() {
+		navAgent.SetDestination (navTarget.transform.position);
 	}
 
 	void FixedUpdate() {
