@@ -13,27 +13,37 @@ public class EnemyAI : MonoBehaviour {
 	protected GameObject navTarget;
 	protected NavMeshAgent navAgent;
 
-	void Awake() {
+	protected virtual void Awake() {
 		healthCurrent = healthMax;
+        rigidbody.isKinematic = false;
+        rigidbody.useGravity = true;
 	}
 
-	void Start() {
+    protected virtual void Start()
+    {
 		gameManager = GameObject.Find ("$GameManager");
+
+        //  NavMesh
 		navAgent = GetComponent<NavMeshAgent> ();
 		navTarget = GameObject.Find ("Player");
 	}
 
-	void Update() {
+    protected virtual void FixedUpdate()
+    {
+        //  Make sure the Enemy is targeting the players current position
 		navAgent.SetDestination (navTarget.transform.position);
+        Move();
 	}
 
-	void FixedUpdate() {
-		if (healthCurrent <= 0)
-			Explode();
-	}
+    protected virtual void Move()
+    {
+        if (!navAgent.updatePosition)
+            navAgent.updatePosition = true;
+    }
 
-	protected void Explode() {
-		//	Create Particle Explosion
+    public virtual void Explode()
+    {
+		//	Create Particle Emitters
 		for (int i = 0; i < particles.Length; i++) {
 			Instantiate(particles[i], transform.position, Quaternion.Euler(-90,0,transform.rotation.eulerAngles.z));
 		}
@@ -47,7 +57,11 @@ public class EnemyAI : MonoBehaviour {
 		Destroy (this.gameObject);
 	}
 
-	public void TakeDamage(float damage) {
+    public virtual void TakeDamage(float damage)
+    {
 		healthCurrent -= damage;
+
+        if (healthCurrent <= 0)
+            Explode();
 	}
 }

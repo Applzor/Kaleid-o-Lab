@@ -46,7 +46,10 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\EnemyAI.cs" />
+     <Compile Include="Assets\Scripts\Enemy\EnemyAI.cs" />
+     <Compile Include="Assets\Scripts\Enemy\EnemySlimeAI.cs" />
+     <Compile Include="Assets\Scripts\Enemy\EnemySlimeBigAI.cs" />
+     <Compile Include="Assets\Scripts\Enemy\EnemySplit.cs" />
      <Compile Include="Assets\Scripts\PlatformRaise.cs" />
      <Compile Include="Assets\Scripts\Player\Attack_.cs" />
      <Compile Include="Assets\Scripts\Player\CameraFollow.cs" />
