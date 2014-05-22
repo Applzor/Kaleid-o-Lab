@@ -1,67 +1,83 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyAI : MonoBehaviour {
+public abstract class EnemyAI : MonoBehaviour {
 
+    //  Stats
 	public float healthMax;
 	protected float healthCurrent;
+    public int score;
 
-	public GameObject[] particles;
+    //  Effects
+	public GameObject[] explodeParticles;
+    public GameObject[] explodeSounds;
 
+    //  Navigation
+    protected Transform target;
+    protected NavMeshAgent navAgent;
+
+    //  Misc
 	protected GameObject gameManager;
 
-	protected GameObject navTarget;
-	protected NavMeshAgent navAgent;
-
-	protected virtual void Awake() {
-		healthCurrent = healthMax;
-        rigidbody.isKinematic = false;
-        rigidbody.useGravity = true;
-	}
-
-    protected virtual void Start()
+    protected void Start()
     {
-		gameManager = GameObject.Find ("$GameManager");
-
-        //  NavMesh
-		navAgent = GetComponent<NavMeshAgent> ();
-		navTarget = GameObject.Find ("Player");
-	}
-
-    protected virtual void FixedUpdate()
-    {
-        //  Make sure the Enemy is targeting the players current position
-		navAgent.SetDestination (navTarget.transform.position);
-        Move();
-	}
-
-    protected virtual void Move()
-    {
-        if (!navAgent.updatePosition)
-            navAgent.updatePosition = true;
+        gameManager = GameObject.Find("$GameManager");
     }
 
-    public virtual void Explode()
+    protected void Awake()
     {
-		//	Create Particle Emitters
-		for (int i = 0; i < particles.Length; i++) {
-			Instantiate(particles[i], transform.position, Quaternion.Euler(-90,0,transform.rotation.eulerAngles.z));
-		}
-		
-		//	Play sound effect
+		healthCurrent = healthMax;
 
-		//	Add to score?
-		gameManager.transform.GetComponent<_GameManager> ().playerScore++;
-		
-		//	Delete bullet last
-		Destroy (this.gameObject);
+        //  Setup Navigation
+        navAgent = GetComponent<NavMeshAgent>();
+        target = GameObject.Find(_Tags.Player).transform;
 	}
 
+    protected void FixedUpdate()
+    {
+        //  Make sure the Enemy is targeting the players current position
+        navAgent.SetDestination(target.position);
+
+        //  Move the Player
+        Move();
+
+        //  Check for player death
+        if (healthCurrent <= 0) Die();
+	}
+
+    protected virtual void Move() { }
+    protected virtual void OnDeath() { }
+
+    protected virtual void Die() {
+        //  Increase Score
+        gameManager.transform.GetComponent<_GameManager>().playerScore += score;
+
+        OnDeath();
+
+        //  Explode the Character
+        Explode();
+
+        //  Destroy the Object
+        Destroy(this.gameObject);
+    }
+
+    protected void Explode()
+    {
+		//	Create Particle Emitter
+        if (explodeParticles.Length > 0)
+            foreach(GameObject particle in explodeParticles)
+                Instantiate(particle, transform.position, Quaternion.Euler(-90, 0, transform.rotation.eulerAngles.z));
+		
+		//	Play sound effect
+        if (explodeSounds.Length > 0)
+            foreach (GameObject sound in explodeSounds)
+                Instantiate(sound, transform.position, transform.rotation);
+	}
+
+
+    //!----PUBLIC METHODS----!
     public virtual void TakeDamage(float damage)
     {
 		healthCurrent -= damage;
-
-        if (healthCurrent <= 0)
-            Explode();
 	}
 }

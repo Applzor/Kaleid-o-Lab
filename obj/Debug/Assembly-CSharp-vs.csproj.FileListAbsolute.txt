@@ -1,0 +1,11 @@
+C:\Users\Admin\Documents\Programming\Unity\Kaleid-o-Lab\Temp\bin\Debug\Assembly-CSharp.dll
+C:\Users\Admin\Documents\Programming\Unity\Kaleid-o-Lab\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Users\Admin\Documents\Programming\Unity\Kaleid-o-Lab\Temp\bin\Debug\UnityEditor.dll
+C:\Users\Admin\Documents\Programming\Unity\Kaleid-o-Lab\Temp\bin\Debug\UnityEngine.dll
+C:\Users\Admin\Documents\Programming\Unity\Kaleid-o-Lab\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\Admin\Documents\Programming\Unity\Kaleid-o-Lab\Temp\bin\Debug\nunit.framework.dll
+C:\Users\Admin\Documents\Programming\Unity\Kaleid-o-Lab\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\Admin\Documents\Programming\Unity\Kaleid-o-Lab\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+C:\Users\Admin\Documents\Programming\Unity\Kaleid-o-Lab\obj\Debug\Assembly-CSharp-vs.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Documents\Programming\Unity\Kaleid-o-Lab\obj\Debug\Assembly-CSharp.dll
+C:\Users\Admin\Documents\Programming\Unity\Kaleid-o-Lab\obj\Debug\Assembly-CSharp.pdb

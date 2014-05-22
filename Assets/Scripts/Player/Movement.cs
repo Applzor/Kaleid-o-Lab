@@ -11,7 +11,6 @@ public class Movement : MonoBehaviour {
 		Vector3 direction = new Vector3 (Input.GetAxis ("Horizontal"), 0, Input.GetAxis ("Vertical"));
 		direction.Normalize ();
 
-        float movementSpeed = acceleration * Time.fixedDeltaTime;
-		rigidbody.AddForce(direction  * movementSpeed, ForceMode.VelocityChange);		
+		rigidbody.AddForce(direction  * acceleration * Time.fixedDeltaTime, ForceMode.VelocityChange);		
 	}
 }
