@@ -3,7 +3,6 @@ using System.Collections;
 
 public class SlimeAI : EnemyAI {
 
-    public GameObject spawnEnemy;
     const int spawnAmount = 2;
 
     protected float moveForce;
@@ -46,6 +45,9 @@ public class SlimeAI : EnemyAI {
         Vector3 dir = (navAgent.steeringTarget - transform.position).normalized;
         rigidbody.AddForce(dir * moveForce * Time.fixedDeltaTime, ForceMode.VelocityChange);
         rigidbody.AddForce(transform.up * jumpForce * Time.fixedDeltaTime, ForceMode.Impulse);
+
+        for (int i = 0; i < moveParticles.Length; i++)
+            Instantiate(moveParticles[i], transform.position, transform.rotation);
     }
 
     protected override void OnDeath()
@@ -55,23 +57,22 @@ public class SlimeAI : EnemyAI {
 
     void Split()
     {
-        if (spawnEnemy)
-        {
-            //  Half the size of the slime
-            float halfScale= spawnEnemy.transform.localScale.x / 2.0f;
-            if (halfScale < 1) return;
+        //  Half the size of the slime
+        float halfScale = transform.localScale.x / 2.0f;
+        if (halfScale < 1) return;
 
-            //  Only ever spawn two slimes
-            for (int i = 0; i < spawnAmount; i++)
-            {   
-                //  Spawn the slimes in opposite directions
-                Vector3 direction = Quaternion.AngleAxis(180*i+90, transform.up) * transform.forward;
-                direction.Normalize();
+        //  Only ever spawn two slimes
+        for (int i = 0; i < spawnAmount; i++)
+        {   
+            //  Spawn the slimes in opposite directions
+            Vector3 direction = Quaternion.AngleAxis(180*i+90, transform.up) * transform.forward;
+            direction.Normalize();
 
-                spawnEnemy.transform.localScale = new Vector3(halfScale, halfScale, halfScale);
-                GameObject obj = Instantiate(spawnEnemy, transform.position + (direction * halfScale), transform.rotation) as GameObject;
-                obj.rigidbody.AddForce(direction * moveForce * Time.fixedDeltaTime, ForceMode.VelocityChange);
-            }
+            //  Spawn the Slimes at the current Slimes position adjusted apart so they don't collide and on the ground
+            GameObject obj = Instantiate(this.gameObject, 
+                transform.position + (direction * halfScale) - (transform.up * halfScale * 0.25f), 
+                transform.rotation) as GameObject;
+            obj.transform.localScale = new Vector3(halfScale, halfScale, halfScale);
         }
     }
 }

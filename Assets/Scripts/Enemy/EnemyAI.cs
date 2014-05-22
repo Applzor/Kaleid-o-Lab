@@ -11,6 +11,7 @@ public abstract class EnemyAI : MonoBehaviour {
     //  Effects
 	public GameObject[] explodeParticles;
     public GameObject[] explodeSounds;
+    public GameObject[] moveParticles;
 
     //  Navigation
     protected Transform target;
