@@ -31,7 +31,7 @@ public abstract class EnemyAI : MonoBehaviour {
 
         //  Setup Navigation
         navAgent = GetComponent<NavMeshAgent>();
-        target = GameObject.Find(_Tags.Player).transform;
+        target = GameObject.Find(Tags.Player).transform;
 	}
 
     protected void FixedUpdate()
@@ -51,7 +51,7 @@ public abstract class EnemyAI : MonoBehaviour {
 
     protected virtual void Die() {
         //  Increase Score
-        gameManager.transform.GetComponent<_GameManager>().playerScore += score;
+        gameManager.transform.GetComponent<GameManager>().playerScore += score;
 
         OnDeath();
 

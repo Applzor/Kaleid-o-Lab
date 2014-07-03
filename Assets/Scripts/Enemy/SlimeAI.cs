@@ -18,7 +18,7 @@ public class SlimeAI : EnemyAI {
     protected bool grounded = false;
     protected float scale;
 
-    void Awake()
+    new void Awake()
     {
         base.Awake();
         navAgent.updatePosition = false;
