@@ -9,23 +9,17 @@ public abstract class Weapon : MonoBehaviour {
 	public float rate = 1f;
 	protected float cooldown = 0;
 
-	//	Particles
-	public GameObject[] bulletEmitter;
-	public GameObject[] shellEmitter;
-	public GameObject[] effectEmitter;
-	protected List<Bullets> bulletsScripts;
-
+	//	Handles
 	protected Animator animationController = null;
 
-	void Start()
+	protected void Start()
 	{
 		//	Initalise Data
-		bulletsScripts = new List<Bullets>();
-		FindBulletScripts();
+		UpdateBulletScripts();
 
 		animationController = GetComponent<Animator>();
 	}
-	void Update() 
+	protected void Update() 
 	{
 		Shoot(Input.GetAxis("Fire1"));
 
@@ -33,32 +27,16 @@ public abstract class Weapon : MonoBehaviour {
 		cooldown -= Time.deltaTime;
 	}
 
-	public virtual void Shoot(float fire)
+	public abstract void Shoot(float fire);
+
+	//	Will update relevant stats for the bullets
+	//	~Damage
+	void UpdateBulletScripts()
 	{
-		if (fire <= 0)
-			return;
-
-		if (cooldown <= 0)
+		List<Bullets> bulletsScripts = new List<Bullets>();
+		foreach (Transform t in transform)
 		{
-			//	Play particles
-			foreach (GameObject obj in bulletEmitter)
-				obj.particleSystem.Play();
-			foreach (GameObject obj in shellEmitter)
-				obj.particleSystem.Play();
-			foreach (GameObject obj in effectEmitter)
-				obj.particleSystem.Play();
-
-			//	Reset Timer
-			cooldown = rate;
-		}
-	}
-
-	void FindBulletScripts()
-	{
-		bulletsScripts.Clear();
-		foreach (GameObject obj in bulletEmitter)
-		{
-			var component = obj.GetComponent<Bullets>();
+			var component = t.GetComponent<Bullets>();
 			if (component != null)
 				bulletsScripts.Add(component);
 		}

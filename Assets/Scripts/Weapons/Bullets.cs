@@ -3,13 +3,19 @@ using System.Collections;
 
 public class Bullets : MonoBehaviour {
 
+	//	Stats
 	protected float damage = 0;
-
 	public float Damage { get { return damage; } set { damage = value; } }
-	
-	protected virtual void OnParticleCollision(GameObject other) {
-		if (other.tag == Tags.Enemy) {
+
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.transform.tag == Tags.Enemy)
 			other.GetComponent<EnemyAI>().TakeDamage(damage);
-		}
+	}
+
+	void OnParticleCollision(GameObject other) {
+		//@IMPRV
+		if (other.tag == Tags.Enemy)
+			other.GetComponent<EnemyAI>().TakeDamage(damage);
 	}
 }

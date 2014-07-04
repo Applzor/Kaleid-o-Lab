@@ -75,7 +75,6 @@ public abstract class EnemyAI : MonoBehaviour {
                 Instantiate(sound, transform.position, transform.rotation);
 	}
 
-
     //!----PUBLIC METHODS----!
     public virtual void TakeDamage(float damage)
     {
