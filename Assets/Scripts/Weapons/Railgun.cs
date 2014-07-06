@@ -16,6 +16,13 @@ public class Railgun : Weapon
 	public GameObject[] shellEmitter;
 	public GameObject[] effectEmitter;
 
+    new void Start()
+    {
+        base.Start();
+        damage = GameParameters.Instance.RailgunDamage;
+        firerate = GameParameters.Instance.RailgunFireRate;
+    }
+
 	public override void Shoot(float fire)
     {
 		if (fire == 1 && cooldown <= 0)
@@ -31,7 +38,7 @@ public class Railgun : Weapon
 			if (effectEmitter.Length > 0) effectEmitter[effect].particleSystem.Play();
 
 			//	Reset Timer
-			cooldown = rate;
+            cooldown = firerate;
 			CycleAttachment();
 		}
 	}

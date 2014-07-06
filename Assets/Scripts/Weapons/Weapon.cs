@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public abstract class Weapon : MonoBehaviour {
 
 	//	Stats
-	public float damage = 0f;
-	public float rate = 1f;
+	protected float damage = 0f;
+	protected float firerate = 1f;
 	protected float cooldown = 0;
 
 	//	Handles

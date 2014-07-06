@@ -9,6 +9,13 @@ public class Chaingun : Weapon {
 	public GameObject[] shellEmitter;
 	public GameObject[] effectEmitter;
 
+    new void Start()
+    {
+        base.Start();
+        damage = GameParameters.Instance.ChaingunDamage;
+        firerate = GameParameters.Instance.ChaingunFireRate;
+    }
+
 	public override void Shoot(float fire) 
 	{
 		animationController.SetFloat("Fire", fire);
@@ -24,7 +31,7 @@ public class Chaingun : Weapon {
 				obj.particleSystem.Play();
 
 			//	Reset Timer
-			cooldown = rate;
+			cooldown = firerate;
 		}
 	}
 }
