@@ -11,9 +11,9 @@ public class Chaingun : Weapon {
 
     new void Start()
     {
-        base.Start();
-        damage = GameParameters.Instance.ChaingunDamage;
-        firerate = GameParameters.Instance.ChaingunFireRate;
+		damage = GameParameters.Instance.ChaingunDamage;
+		firerate = GameParameters.Instance.ChaingunFireRate;
+		base.Start();
     }
 
 	public override void Shoot(float fire) 

@@ -18,9 +18,9 @@ public class Railgun : Weapon
 
     new void Start()
     {
-        base.Start();
-        damage = GameParameters.Instance.RailgunDamage;
-        firerate = GameParameters.Instance.RailgunFireRate;
+		damage = GameParameters.Instance.RailgunDamage;
+		firerate = GameParameters.Instance.RailgunFireRate;
+		base.Start();
     }
 
 	public override void Shoot(float fire)

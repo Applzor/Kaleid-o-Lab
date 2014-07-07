@@ -1,41 +1,57 @@
 ﻿using UnityEngine;
 using UnityEditor;
-using System;
 
 [CustomEditor(typeof(GameParameters))]
 public class GameParametersEditor : Editor
 {
-    [MenuItem("Game Design/Game Parameters")]
-    public static void GameParameters()
+	GameParameters gp = null;
+
+	enum WEAPONS
+	{
+		Chaingun,
+		Railgun,
+	}
+	WEAPONS WEAPON_STATE;
+
+	public override void OnInspectorGUI()
     {
-        GameParameters gp = null;
+        gp = (GameParameters)target;
 
-        //  If we can't load the asset, create a new one
-        if (gp == null)
-        {
-            gp = new GameParameters();
-            AssetDatabase.CreateAsset(gp, "Assets/Assets/GameParameters.asset");
-        }
-
-
-        AssetDatabase.SaveAssets();
-        EditorUtility.FocusProjectWindow();
-        Selection.activeObject = gp;
+		EditWeapons();
     }
 
-    public override void OnInspectorGUI()
-    {
-        GameParameters gp = (GameParameters)target;
+	void EditWeapons()
+	{
+		WEAPON_STATE = (WEAPONS)EditorGUILayout.EnumPopup("Weapon:", WEAPON_STATE);
+		switch (WEAPON_STATE)
+		{
+			case (WEAPONS.Chaingun):
+			{
+				//  Chaingun
+				gp.ChaingunDamage = EditorGUILayout.FloatField("Damage:", gp.ChaingunDamage);
+				gp.ChaingunFireRate = EditorGUILayout.FloatField("Fire Rate:", gp.ChaingunFireRate);
+				break;
+			}
+			case (WEAPONS.Railgun):
+			{
+				//  Railgun
+				gp.RailgunDamage = EditorGUILayout.FloatField("Damage:", gp.RailgunDamage);
+				gp.RailgunFireRate = EditorGUILayout.FloatField("Fire Rate:", gp.RailgunFireRate);
+				break;
+			}
+		}
+	}
 
-        //  Weapons
-        GUILayout.Label("Weapons:");
-        {
-            //  Railgun
-            GUILayout.Label("Railgun:");
-            {
-                gp.RailgunDamage = EditorGUILayout.FloatField("Damage", gp.RailgunDamage);
-                gp.RailgunFireRate = EditorGUILayout.FloatField("Fire Rate", gp.RailgunFireRate);
-            }
-        }
-    }
+	//	Creation of the Asset
+	[MenuItem("Assets/Create/Game Parameters")]
+	public static void CreateAsset()
+	{
+		ScriptableObjectUtility.CreateAsset<GameParameters>();
+	}
+	//	Selecting the Asset
+	[MenuItem("Game Design/Game Parameters")]
+	public static void SelectAsset()
+	{
+		Selection.activeObject = Resources.LoadAssetAtPath("Assets/Resources/GameParameters.asset", typeof(ScriptableObject));
+	}
 }
